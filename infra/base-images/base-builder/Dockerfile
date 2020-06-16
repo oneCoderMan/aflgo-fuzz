@@ -60,11 +60,11 @@ RUN mkdir afl && \
 
 #ADD https://raw.githubusercontent.com/jay/showlinenum/develop/showlinenum.awk $SRC/
 
-ADD https://github.com/google/honggfuzz/archive/oss-fuzz.tar.gz $SRC/
-RUN mkdir honggfuzz && \
-    cd honggfuzz && \
-    tar -xzv --strip-components=1 -f $SRC/oss-fuzz.tar.gz && \
-    rm -rf $SRC/oss-fuzz.tar.gz
+#ADD https://github.com/google/honggfuzz/archive/oss-fuzz.tar.gz $SRC/
+#RUN mkdir honggfuzz && \
+#    cd honggfuzz && \
+#    tar -xzv --strip-components=1 -f $SRC/oss-fuzz.tar.gz && \
+#    rm -rf $SRC/oss-fuzz.tar.gz
 
 COPY compile compile_afl compile_aflgo compile_libfuzzer compile_honggfuzz coverage_report srcmap /usr/local/bin/
 

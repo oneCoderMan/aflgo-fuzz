@@ -1,0 +1,1 @@
+MagickCore/draw.c:2704

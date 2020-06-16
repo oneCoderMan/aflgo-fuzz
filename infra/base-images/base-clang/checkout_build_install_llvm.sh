@@ -39,7 +39,7 @@ cmake -G "Ninja" \
       -DLIBCXX_ENABLE_SHARED=OFF -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON \
       -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD="X86" \
       -DLLVM_BINUTILS_INCDIR=/usr/include $SRC/build/llvm_tools/llvm-4.0.0.src
-ninja; sudo ninja install
+ninja;  ninja install
 cd $SRC/build/llvm_tools
 mkdir -p build-llvm/msan; cd build-llvm/msan
 cmake -G "Ninja" \
@@ -48,7 +48,7 @@ cmake -G "Ninja" \
       -DLIBCXX_ENABLE_SHARED=OFF -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON \
       -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD="X86" \
        $SRC/build/llvm_tools/llvm-4.0.0.src
-ninja cxx; sudo ninja install-cxx
+ninja cxx; ninja install-cxx
 
 # install LLVMgold in bfd-plugins
 mkdir /usr/lib/bfd-plugins

@@ -104,12 +104,12 @@ else
     DO_POSTPROCESS=1
 
     TMP_DIR=$WORK/tmp
-    i=0
-    while [ -d $TMP_DIR ]; do
-      TMP_DIR=$WORK/tmp.$i
-      i=$((i + 1))
-    done
-    mkdir $TMP_DIR
+#    i=0
+#    while [ -d $TMP_DIR ]; do
+#      TMP_DIR=$WORK/tmp.$i
+#      i=$((i + 1))
+#    done
+    mkdir -p $TMP_DIR
 
     COPY_CFLAGS=$CFLAGS
     COPY_CXXFLAGS=$CXXFLAGS
@@ -132,7 +132,9 @@ else
 #    cat $SRC/commit.diff |  $SRC/showlinenum.awk show_header=0 path=1 | grep -e "\.[ch]:[0-9]*:+" -e "\.cpp:[0-9]*:+" -e "\.cc:[0-9]*:+" | cut -d+ -f1 | rev | cut -c2- | rev > $TMP_DIR/BBtargets.txt
 #    cat $TMP_DIR/BBtargets.txt
 #    popd > /dev/null
-     cat $SRC/BBtargets.txt > $TMP_DIR/BBtargets.txt
+     cat $SRC/BBtargets.txt >>  $TMP_DIR/BBtargets.txt
+     echo "BBtargets's content is as follow"
+     cat $TMP_DIR/BBtargets.txt
 
     if [ $(cat $TMP_DIR/BBtargets.txt | wc -l) -eq 0 ]; then
       echo    "############################################################################"

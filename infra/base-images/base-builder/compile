@@ -20,42 +20,42 @@ echo "---------------------------------------------------------------"
 is_git=0
 is_svn=0
 
-if ! [ -z "$COMMIT" ]; then
-
-  pushd $SRC/$PROJECT >/dev/null
-
-  if [ -d .git ]; then
-
-    if [[ "$COMMIT" != master ]] || [[ "$FUZZING_ENGINE" == aflgo ]]; then
-      echo "Checking out git history of $PROJECT .."
-      if [ -f $(git rev-parse --git-dir)/shallow ]; then
-        git pull --unshallow
-      fi
-      git checkout $COMMIT
-    fi
-    is_git=1
-
-  elif svn info .; then
-
-    if [[ "$COMMIT" == master ]]; then
-      COMMIT=$(svnversion)
-    else 
-      svn update --revision $COMMIT
-    fi
-
-    cat << EOF > $SRC/diff.sh
-#!/bin/bash
-git diff --no-index \$6 \$7 | sed -e "s~\$6~/\$(echo \$3 | cut -d" " -f1)~g"  -e "s~\$7~/\$(echo \$5 | cut -d" " -f1)~g"
-EOF
-    chmod +x $SRC/diff.sh
-    is_svn=1
-  else
-    echo "[!] Don't know how to check out revision $COMMIT."
-    exit 1
-  fi
-
-  popd >/dev/null
-fi
+#if ! [ -z "$COMMIT" ]; then
+#
+#  pushd $SRC/$PROJECT >/dev/null
+#
+#  if [ -d .git ]; then
+#
+#    if [[ "$COMMIT" != master ]] || [[ "$FUZZING_ENGINE" == aflgo ]]; then
+#      echo "Checking out git history of $PROJECT .."
+#      if [ -f $(git rev-parse --git-dir)/shallow ]; then
+#        git pull --unshallow
+#      fi
+#      git checkout $COMMIT
+#    fi
+#    is_git=1
+#
+#  elif svn info .; then
+#
+#    if [[ "$COMMIT" == master ]]; then
+#      COMMIT=$(svnversion)
+#    else
+#      svn update --revision $COMMIT
+#    fi
+#
+#    cat << EOF > $SRC/diff.sh
+##!/bin/bash
+#git diff --no-index \$6 \$7 | sed -e "s~\$6~/\$(echo \$3 | cut -d" " -f1)~g"  -e "s~\$7~/\$(echo \$5 | cut -d" " -f1)~g"
+#EOF
+#    chmod +x $SRC/diff.sh
+#    is_svn=1
+#  else
+#    echo "[!] Don't know how to check out revision $COMMIT."
+#    exit 1
+#  fi
+#
+#  popd >/dev/null
+#fi
 
 if [ -z "${SANITIZER_FLAGS-}" ]; then
   FLAGS_VAR="SANITIZER_FLAGS_${SANITIZER}"

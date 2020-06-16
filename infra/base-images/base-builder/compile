@@ -136,7 +136,7 @@ else
 
     if [ $(cat $TMP_DIR/BBtargets.txt | wc -l) -eq 0 ]; then
       echo    "############################################################################"
-      echo -e "# \e[1;31mAborting ..\e[0m -- No changed source <files> in commit $COMMIT of $PROJECT."
+      echo -e "# \e[1;31mAborting ..\e[0m -- No changed source <files> in commit of $PROJECT."
       echo    "############################################################################"
       rm -rf $TMP_DIR
       exit 1
@@ -165,7 +165,7 @@ if [ $DO_POSTPROCESS -eq 1 ]; then
 
   if [ $(grep -Ev "^$" $TMP_DIR/Ftargets.txt | wc -l) -eq 0 ]; then
     echo    "############################################################################"
-    echo -e "# \e[1;31mAborting ..\e[0m -- No changed source code <lines> in commit $COMMIT of $PROJECT."
+    echo -e "# \e[1;31mAborting ..\e[0m -- No changed source code <lines> in commit  of $PROJECT."
     echo    "############################################################################"
     rm $OUT/*
     rm -rf $TMP_DIR

@@ -68,5 +68,15 @@ RUN mkdir honggfuzz && \
 
 COPY compile compile_afl compile_aflgo compile_libfuzzer compile_honggfuzz coverage_report srcmap /usr/local/bin/
 
+RUN chmod +x /usr/local/bin/compile
+RUN chmod +x /usr/local/bin/compile_afl
+RUN chmod +x /usr/local/bin/compile_aflgo
+RUN chmod +x /usr/local/bin/compile_libfuzzer
+RUN chmod +x /usr/local/bin/compile_honggfuzz
+RUN chmod +x /usr/local/bin/coverage_report
+RUN chmod +x /usr/local/bin/srcmap
+
+RUN /usr/local/bin/compile_aflgo
+
 CMD ["compile"]
 

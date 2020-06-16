@@ -13,3 +13,4 @@ WORKDIR ImageMagick
 RUN git checkout f2c9bdb8
 
 COPY build.sh $SRC/
+COPY BBtargets.txt $SRC/

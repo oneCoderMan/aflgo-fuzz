@@ -66,6 +66,8 @@ RUN mkdir afl && \
 #    tar -xzv --strip-components=1 -f $SRC/oss-fuzz.tar.gz && \
 #    rm -rf $SRC/oss-fuzz.tar.gz
 
+RUN git clone https://gitee.com/onecoderMan/Fuzzer.git libfuzzer
+
 COPY compile compile_afl compile_aflgo compile_libfuzzer compile_honggfuzz coverage_report srcmap /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/compile

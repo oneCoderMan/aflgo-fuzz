@@ -6,7 +6,7 @@ MAINTAINER your@email.com
 #RUN git clone --depth 1 <git_url> upx     # or use other version control
 #RUN git clone --depth=1 https://gitee.com/truelq/upx.git
 #RUN git clone https://github.com/ImageMagick/ImageMagick.git
-RUN apt-get install -y automake libtool autoconf libbz2-dev
+RUN apt-get install -y automake libtool autoconf libbz2-dev zlib-dev
 
 RUN git clone https://gitee.com/onecoderMan/lrzip.git
 

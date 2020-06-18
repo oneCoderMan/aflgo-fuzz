@@ -132,7 +132,7 @@ else
 #    cat $SRC/commit.diff |  $SRC/showlinenum.awk show_header=0 path=1 | grep -e "\.[ch]:[0-9]*:+" -e "\.cpp:[0-9]*:+" -e "\.cc:[0-9]*:+" | cut -d+ -f1 | rev | cut -c2- | rev > $TMP_DIR/BBtargets.txt
 #    cat $TMP_DIR/BBtargets.txt
 #    popd > /dev/null
-     cat $SRC/BBtargets.txt >>  $TMP_DIR/BBtargets.txt
+     cat $SRC/BBtargets.txt >  $TMP_DIR/BBtargets.txt
      echo -e "BBtargets's content is as follow\n"
      cat $TMP_DIR/BBtargets.txt
 

@@ -167,10 +167,10 @@ if [ $DO_POSTPROCESS -eq 1 ]; then
 
   if [ $(grep -Ev "^$" $TMP_DIR/Ftargets.txt | wc -l) -eq 0 ]; then
     echo    "############################################################################"
-    echo -e "# \e[1;31mAborting ..\e[0m -- No changed source code <lines> in commit  of $PROJECT."
+    echo -e "# \e[1;31mAborting ..\e[0m -- Ftargets.txt No changed source code <lines> in commit  of $PROJECT."
     echo    "############################################################################"
-    rm $OUT/*
-    rm -rf $TMP_DIR
+#    rm $OUT/*
+#    rm -rf $TMP_DIR
     exit 1
   fi
 
@@ -193,9 +193,9 @@ if [ $DO_POSTPROCESS -eq 1 ]; then
   $SRC/aflgo/scripts/genDistance.sh $OUT $TMP_DIR $FUZZER
 
   #Clean up
-  rm $OUT/*
+#  rm $OUT/*
   cp $TMP_DIR/distance.cfg.txt $OUT
-  rm -rf $TMP_DIR
+#  rm -rf $TMP_DIR
 
   export CFLAGS="$COPY_CFLAGS -distance=$OUT/distance.cfg.txt"
   export CXXFLAGS="$COPY_CXXFLAGS -distance=$OUT/distance.cfg.txt"

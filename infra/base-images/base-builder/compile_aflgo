@@ -22,7 +22,7 @@ export COVERAGE_FLAGS="-fsanitize-coverage=trace-pc-guard"
 echo ""
 echo "Checking out aflgo .."
 pushd $SRC >/dev/null
-git clone --depth 1 https://github.com/aflgo/aflgo.git
+git clone  https://github.com/aflgo/aflgo.git
 cd aflgo
 git checkout c9efa4f
 cd ..

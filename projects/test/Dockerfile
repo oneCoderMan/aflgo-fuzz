@@ -8,6 +8,6 @@ MAINTAINER your@email.com
 RUN git clone https://github.com/oneCoderMan/test.git
 
 
-
+WORKDIR test
 COPY build.sh $SRC/
 COPY BBtargets.txt $SRC/

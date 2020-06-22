@@ -23,6 +23,7 @@ RUN apt-get install -y autoconf automake libtool-bin
 RUN apt-get install -y git subversion jq python3 zip make libunwind8-dev binutils-dev libblocksruntime-dev gawk python3-pip vim && \
     pip3 install --upgrade pip && \
     pip3 install networkx && \
+    pip3 install pydot && \
     pip3 install pydotplus && \
     ln -s $(which python3) /usr/bin/python 
 

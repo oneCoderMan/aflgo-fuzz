@@ -153,6 +153,7 @@ echo "CC=$CC"
 echo "CXX=$CXX"
 echo "CFLAGS=$CFLAGS"
 echo "CXXFLAGS=$CXXFLAGS"
+echo "TMP_DIR=$TMP_DIR"
 
 echo "build: ---------------------------------------------------------------"
 
@@ -194,6 +195,7 @@ if [ $DO_POSTPROCESS -eq 1 ]; then
 
   echo "genDistance :---------------------------------------------------------------"
   $SRC/aflgo/scripts/genDistance.sh $SUBJECT $TMP_DIR $FUZZER
+  echo "genDistance Finish :---------------------------------------------------------------"
 
   #Clean up
 #  rm $OUT/*

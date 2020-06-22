@@ -106,7 +106,7 @@ else
 
     DO_POSTPROCESS=1
 
-    export  TMP_DIR=$WORK/tmp
+    TMP_DIR=$WORK/tmp
 #    i=0
 #    while [ -d $TMP_DIR ]; do
 #      TMP_DIR=$WORK/tmp.$i
@@ -153,7 +153,6 @@ echo "CC=$CC"
 echo "CXX=$CXX"
 echo "CFLAGS=$CFLAGS"
 echo "CXXFLAGS=$CXXFLAGS"
-echo "TMP_DIR=$TMP_DIR"
 
 echo "build: ---------------------------------------------------------------"
 

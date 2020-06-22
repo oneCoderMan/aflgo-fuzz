@@ -21,7 +21,7 @@ is_git=0
 is_svn=0
 pwd
 export SUBJECT=$PWD
-echo "subject:  $SUBJECT-----------------------"
+echo "subject:  $SUBJECT -----------------------"
 
 #if ! [ -z "$COMMIT" ]; then
 #
@@ -106,7 +106,7 @@ else
 
     DO_POSTPROCESS=1
 
-    TMP_DIR=$WORK/tmp
+    export  TMP_DIR=$WORK/tmp
 #    i=0
 #    while [ -d $TMP_DIR ]; do
 #      TMP_DIR=$WORK/tmp.$i

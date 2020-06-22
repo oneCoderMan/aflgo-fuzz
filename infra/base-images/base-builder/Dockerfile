@@ -19,7 +19,7 @@ MAINTAINER mike.aizatsky@gmail.com
 RUN  sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
 #RUN apt-get clean
 RUN apt-get update
-RUN apt-get install -y autoconf automake libtool-bin python-bs4
+RUN apt-get install -y autoconf automake libtool-bin
 RUN apt-get install -y git subversion jq python3 zip make libunwind8-dev binutils-dev libblocksruntime-dev gawk python3-pip vim && \
     pip3 install --upgrade pip && \
     pip3 install networkx && \

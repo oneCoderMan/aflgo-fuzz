@@ -19,6 +19,9 @@ echo "---------------------------------------------------------------"
 
 is_git=0
 is_svn=0
+pwd
+export SUBJECT=$PWD
+echo "subject:  $SUBJECT-----------------------"
 
 #if ! [ -z "$COMMIT" ]; then
 #
@@ -190,7 +193,7 @@ if [ $DO_POSTPROCESS -eq 1 ]; then
   cat $TMP_DIR/BBcalls.txt | sort | uniq > $TMP_DIR/BBcalls2.txt && mv $TMP_DIR/BBcalls2.txt $TMP_DIR/BBcalls.txt
 
   echo "genDistance :---------------------------------------------------------------"
-  $SRC/aflgo/scripts/genDistance.sh $OUT $TMP_DIR $FUZZER
+  $SRC/aflgo/scripts/genDistance.sh $SUBJECT $TMP_DIR $FUZZER
 
   #Clean up
 #  rm $OUT/*

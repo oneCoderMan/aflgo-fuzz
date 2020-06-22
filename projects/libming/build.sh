@@ -5,3 +5,4 @@ export LDFLAGS=-lpthread
 ./configure --disable-shared
 make clean
 make
+cp ./util/swftophp $OUT/

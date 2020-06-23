@@ -24,10 +24,10 @@ cd $OUT
 FUZZER=$1
 shift
 
-rm -rf /tmp/input/ && mkdir /tmp/input/
-cp -pr /in/*  /tmp/input    #初始种子
-echo "----------------"
-ls -l  /tmp/input
+#rm -rf /tmp/input/ && mkdir /tmp/input/
+#cp -pr /in/*  /tmp/input    #初始种子
+#echo "----------------"
+#ls -l  /tmp/input
 #
 #CORPUS=
 #SEED_CORPUS="${FUZZER}_seed_corpus.zip"
@@ -48,7 +48,7 @@ if [[ "$FUZZING_ENGINE" = aflgo ]]; then
   # AFL expects at least 1 file in the input dir.
 #  echo input > /tmp/input/input
 #  CMD_LINE="$OUT/afl-fuzz $AFL_FUZZER_ARGS -i /tmp/input -o /tmp/afl_output $@ $OUT/$FUZZER"
-  CMD_LINE="$SRC/aflgo/afl-fuzz $AFL_FUZZER_ARGS -i /tmp/input -o $OUT  ./$FUZZER $@"
+  CMD_LINE="$SRC/aflgo/afl-fuzz $AFL_FUZZER_ARGS -i $IN -o $OUT  ./$FUZZER $@"
 elif [[ "$FUZZING_ENGINE" = honggfuzz ]]; then
   if [ -z "$CORPUS" ]; then
     CORPUS=/tmp/input

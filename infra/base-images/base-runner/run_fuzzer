@@ -46,7 +46,7 @@ if [[ "$FUZZING_ENGINE" = aflgo ]]; then
   export AFL_SKIP_CPUFREQ=1
 #  rm -rf /tmp/afl_output && mkdir /tmp/afl_output
   # AFL expects at least 1 file in the input dir.
-  echo input > /tmp/input/input
+#  echo input > /tmp/input/input
 #  CMD_LINE="$OUT/afl-fuzz $AFL_FUZZER_ARGS -i /tmp/input -o /tmp/afl_output $@ $OUT/$FUZZER"
   CMD_LINE="$SRC/aflgo/afl-fuzz $AFL_FUZZER_ARGS -i /tmp/input -o $OUT  $OUT/$FUZZER $@"
 elif [[ "$FUZZING_ENGINE" = honggfuzz ]]; then

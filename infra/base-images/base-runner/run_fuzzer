@@ -81,5 +81,6 @@ else
   CMD_LINE="$CMD_LINE < /dev/null"
 fi
 
+echo core >/proc/sys/kernel/core_pattern
 echo $CMD_LINE
 bash -c "$CMD_LINE"

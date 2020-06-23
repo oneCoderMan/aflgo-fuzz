@@ -32,7 +32,6 @@ RUN chmod +x /usr/local/bin/bad_build_check \
     /usr/local/bin/test_all \
     /usr/local/bin/test_report
 
-RUN echo core >/proc/sys/kernel/core_pattern
 # Default environment options for various sanitizers.
 # Note that these match the settings used in ClusterFuzz and
 # shouldn't be changed unless a corresponding change is made on

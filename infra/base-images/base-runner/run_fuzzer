@@ -27,7 +27,7 @@ shift
 rm -rf /tmp/input/ && mkdir /tmp/input/
 cp -pr /in/*  /tmp/input    #初始种子
 echo "----------------"
-ll /tmp/input
+ls -l  /tmp/input
 #
 #CORPUS=
 #SEED_CORPUS="${FUZZER}_seed_corpus.zip"

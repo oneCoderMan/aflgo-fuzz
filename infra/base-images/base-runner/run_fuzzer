@@ -82,4 +82,5 @@ else
 fi
 
 echo $CMD_LINE
+echo core >/proc/sys/kernel/core_pattern
 bash -c "$CMD_LINE"

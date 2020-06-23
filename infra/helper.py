@@ -356,6 +356,7 @@ def run_fuzzer(args):
 
   run_args = sum([['-e', v] for v in env], []) + [
       '-v', '%s:/out' % (os.path.join(BUILD_DIR, 'out', args.project_name)),
+      '-v', '%s/in:/in' % (os.path.join(OSSFUZZ_DIR, 'projects', args.project_name)),
       '-t', 'hust-fuzz-base/base-runner',
       'run_fuzzer',
       args.fuzzer_name,

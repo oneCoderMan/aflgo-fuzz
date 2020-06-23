@@ -24,6 +24,15 @@ RUN apt-get install -y zip file libunwind8 binutils libblocksruntime0
 COPY bad_build_check llvm-symbolizer reproduce run_fuzzer sancov test_all \
     test_report /usr/local/bin/
 
+RUN chmod +x /usr/local/bin/bad_build_check \
+    /usr/local/bin/llvm-symbolizer \
+    /usr/local/bin/reproduce \
+    /usr/local/bin/run_fuzzer \
+    /usr/local/bin/sancov \
+    /usr/local/bin/test_all \
+    /usr/local/bin/test_report
+
+
 # Default environment options for various sanitizers.
 # Note that these match the settings used in ClusterFuzz and
 # shouldn't be changed unless a corresponding change is made on
@@ -32,4 +41,6 @@ ENV ASAN_OPTIONS="alloc_dealloc_mismatch=0:allocator_may_return_null=1:allocator
 ENV MSAN_OPTIONS="print_stats=1:strip_path_prefix=/workspace/:symbolize=1"
 ENV UBSAN_OPTIONS="halt_on_error=1:print_stacktrace=1:print_summary=1:strip_path_prefix=/workspace/:symbolize=1"
 ENV FUZZER_ARGS="-rss_limit_mb=2048 -timeout=25"
-ENV AFL_FUZZER_ARGS="-m none"
+#ENV AFL_FUZZER_ARGS="-m none"
+ENV AFL_FUZZER_ARGS="-m none -z exp -c 45m"
+ENV IN=/in

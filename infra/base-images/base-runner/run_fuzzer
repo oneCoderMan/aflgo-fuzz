@@ -25,26 +25,28 @@ FUZZER=$1
 shift
 
 rm -rf /tmp/input/ && mkdir /tmp/input/
+cp -pr /in/* /tmp/input    #初始种子
+#
+#CORPUS=
+#SEED_CORPUS="${FUZZER}_seed_corpus.zip"
+#if [ -f $SEED_CORPUS ]; then
+#  echo "Using seed corpus: $SEED_CORPUS"
+#  unzip -d /tmp/input/ $SEED_CORPUS > /dev/null
+#  CORPUS=/tmp/input
+#fi
 
-CORPUS=
-SEED_CORPUS="${FUZZER}_seed_corpus.zip"
-if [ -f $SEED_CORPUS ]; then
-  echo "Using seed corpus: $SEED_CORPUS"
-  unzip -d /tmp/input/ $SEED_CORPUS > /dev/null
-  CORPUS=/tmp/input
-fi
-
-if [[ "$FUZZING_ENGINE" = afl ]]; then
+if [[ "$FUZZING_ENGINE" = aflgo ]]; then
   # https://chromium.googlesource.com/chromium/src/+/master/third_party/afl/src/docs/env_variables.txt
   export ASAN_OPTIONS="$ASAN_OPTIONS:abort_on_error=1:symbolize=0"
   export MSAN_OPTIONS="$MSAN_OPTIONS:exit_code=86:symbolize=0"
   export UBSAN_OPTIONS="$UBSAN_OPTIONS:symbolize=0"
   export AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1
   export AFL_SKIP_CPUFREQ=1
-  rm -rf /tmp/afl_output && mkdir /tmp/afl_output
+#  rm -rf /tmp/afl_output && mkdir /tmp/afl_output
   # AFL expects at least 1 file in the input dir.
   echo input > /tmp/input/input
-  CMD_LINE="$OUT/afl-fuzz $AFL_FUZZER_ARGS -i /tmp/input -o /tmp/afl_output $@ $OUT/$FUZZER"
+#  CMD_LINE="$OUT/afl-fuzz $AFL_FUZZER_ARGS -i /tmp/input -o /tmp/afl_output $@ $OUT/$FUZZER"
+  CMD_LINE="$OUT/afl-fuzz $AFL_FUZZER_ARGS -i /tmp/input -o $OUT $@ $OUT/$FUZZER"
 elif [[ "$FUZZING_ENGINE" = honggfuzz ]]; then
   if [ -z "$CORPUS" ]; then
     CORPUS=/tmp/input

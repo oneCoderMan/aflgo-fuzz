@@ -344,54 +344,54 @@ def build_fuzzers(args):
   return 0
 
 
-# def run_fuzzer(args):
-#   """Runs a fuzzer in the container."""
-#   if not _check_project_exists(args.project_name):
-#     return 1
-#
-#   if not _check_fuzzer_exists(args.project_name, args.fuzzer_name):
-#     return 1
-#
-#   env = ['FUZZING_ENGINE=' + args.engine]
-#
-#   run_args = sum([['-e', v] for v in env], []) + [
-#       '-v', '%s:/out' % (os.path.join(BUILD_DIR, 'out', args.project_name)),
-#       '-v', '%s/in:/in' % (os.path.join(OSSFUZZ_DIR, 'projects', args.project_name)),
-#       '-t', 'hust-fuzz-base/base-runner',
-#       'run_fuzzer',
-#       args.fuzzer_name,
-#   ] + args.fuzzer_args
-#
-#   docker_run(run_args)
-
 def run_fuzzer(args):
-  """Runs a fuzzer in the local."""
+  """Runs a fuzzer in the container."""
   if not _check_project_exists(args.project_name):
     return 1
 
   if not _check_fuzzer_exists(args.project_name, args.fuzzer_name):
     return 1
 
+  env = ['FUZZING_ENGINE=' + args.engine]
 
-  run_args = [
-    '%s' % args.fuzzer_name,
-    '%s' % (os.path.join(BUILD_DIR, 'out', args.project_name)),
-    '%s/in' % (os.path.join(OSSFUZZ_DIR, 'projects', args.project_name)),
+  run_args = sum([['-e', v] for v in env], []) + [
+      '-v', '%s:/out' % (os.path.join(BUILD_DIR, 'out', args.project_name)),
+      '-v', '%s/in:/in' % (os.path.join(OSSFUZZ_DIR, 'projects', args.project_name)),
+      '-t', 'hust-fuzz-base/base-runner',
+      'run_fuzzer',
+      args.fuzzer_name,
+  ] + args.fuzzer_args
 
-  ]+args.fuzzer_args
+  docker_run(run_args)
 
-  command = ['sh', os.path.join(OSSFUZZ_DIR, 'infra', "run_fuzzer.sh")]
-
-  command.extend(run_args)
-  print('Running:', _get_command_string(command))
-
-  try:
-      subprocess.check_call(command)
-  except subprocess.CalledProcessError:
-      print('docker build failed.', file=sys.stderr)
-      return False
-
-  return True
+# def run_fuzzer(args):
+#   """Runs a fuzzer in the local."""
+#   if not _check_project_exists(args.project_name):
+#     return 1
+#
+#   if not _check_fuzzer_exists(args.project_name, args.fuzzer_name):
+#     return 1
+#
+#
+#   run_args = [
+#     '%s' % args.fuzzer_name,
+#     '%s' % (os.path.join(BUILD_DIR, 'out', args.project_name)),
+#     '%s/in' % (os.path.join(OSSFUZZ_DIR, 'projects', args.project_name)),
+#
+#   ]+args.fuzzer_args
+#
+#   command = ['sh', os.path.join(OSSFUZZ_DIR, 'infra', "run_fuzzer.sh")]
+#
+#   command.extend(run_args)
+#   print('Running:', _get_command_string(command))
+#
+#   try:
+#       subprocess.check_call(command)
+#   except subprocess.CalledProcessError:
+#       print('docker build failed.', file=sys.stderr)
+#       return False
+#
+#   return True
 
 
 

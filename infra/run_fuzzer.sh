@@ -10,8 +10,9 @@
 echo $#
 echo $1
 #FUZZER=$1
-#
-#shift
+
+shift
+echo $@
 #
 ##rm -rf /tmp/input/ && mkdir /tmp/input/
 ##cp -pr /in/*  /tmp/input    #初始种子

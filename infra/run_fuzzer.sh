@@ -15,7 +15,7 @@ export OUT=$2
 echo $3
 export IN=$3
 
-shift
+shift 3
 echo $@
 #
 ##rm -rf /tmp/input/ && mkdir /tmp/input/

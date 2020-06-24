@@ -81,6 +81,15 @@ def main():
   run_fuzzer_parser.add_argument('fuzzer_args', help='arguments to pass to the fuzzer',
                                  nargs=argparse.REMAINDER)
 
+  run_fuzzer_parser2 = subparsers.add_parser(
+      'run_fuzzer2', help='Run a fuzzer.')
+  _add_engine_args(run_fuzzer_parser2)
+  _add_commit_args(run_fuzzer_parser2)
+  run_fuzzer_parser2.add_argument('project_name', help='name of the project')
+  run_fuzzer_parser2.add_argument('fuzzer_name', help='name of the fuzzer')
+  run_fuzzer_parser2.add_argument('fuzzer_args', help='arguments to pass to the fuzzer',
+                                 nargs=argparse.REMAINDER)
+
   coverage_parser = subparsers.add_parser(
       'coverage', help='Run a fuzzer for a while and generate coverage.')
   _add_commit_args(coverage_parser)
@@ -123,6 +132,8 @@ def main():
     return build_fuzzers(args)
   elif args.command == 'run_fuzzer':
     return run_fuzzer(args)
+  elif args.command == 'run_fuzzer2':
+    return run_fuzzer2(args)
   elif args.command == 'coverage':
     return coverage(args)
   elif args.command == 'reproduce':

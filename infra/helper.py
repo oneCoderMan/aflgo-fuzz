@@ -376,7 +376,7 @@ def run_fuzzer(args):
   run_args = [
     '%s' % args.fuzzer_name,
     '%s' % (os.path.join(BUILD_DIR, 'out', args.project_name)),
-    '%s' % (os.path.join(OSSFUZZ_DIR, 'projects', args.project_name)),
+    '%s/in' % (os.path.join(OSSFUZZ_DIR, 'projects', args.project_name)),
 
   ]+args.fuzzer_args
 

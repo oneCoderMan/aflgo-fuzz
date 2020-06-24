@@ -9,7 +9,11 @@
 #cd $OUT
 echo $#
 echo $1
-#FUZZER=$1
+FUZZER=$1
+echo $2
+export OUT=$2
+echo $3
+export IN=$3
 
 shift
 echo $@

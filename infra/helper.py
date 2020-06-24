@@ -373,7 +373,7 @@ def run_fuzzer(args):
     return 1
 
 
-  run_args = [args.fuzzer_name, args.fuzzer_args]
+  run_args = ['%s' % args.fuzzer_name, '%s' %args.fuzzer_args]
   command = ['sh', os.path.join(OSSFUZZ_DIR, 'infra', "run_fuzzer.sh")]
 
   command.extend(run_args)

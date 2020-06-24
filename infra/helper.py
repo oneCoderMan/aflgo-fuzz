@@ -422,7 +422,7 @@ def coverage(args):
   if not _check_project_exists(args.project_name):
     return 1
 
-  if not _check_fuzzer_exists(args.project_name, args.commit, args.fuzzer_name):
+  if not _check_fuzzer_exists(args.project_name, args.fuzzer_name):
     return 1
 
   temp_dir = tempfile.mkdtemp()

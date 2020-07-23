@@ -38,6 +38,7 @@ then
   CMD_LINE="$SRC/aflgo/afl-fuzz $AFL_FUZZER_ARGS -i $IN -o $OUT  ./$FUZZER $@"
 else
   CMD_LINE="$SRC/afl/afl-fuzz $AFL_FUZZER_ARGS -i $IN -o $OUT  ./$FUZZER $@"
+fi
 
 
 echo $CMD_LINE

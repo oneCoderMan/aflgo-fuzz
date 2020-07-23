@@ -28,7 +28,7 @@ shift
 export AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1
 export AFL_SKIP_CPUFREQ=1
 
-if ! [[ "$FUZZING_ENGINE" == aflgo ]]
+if  [[ "$FUZZING_ENGINE" == aflgo ]]
 then
     # https://chromium.googlesource.com/chromium/src/+/master/third_party/afl/src/docs/env_variables.txt
   #  export ASAN_OPTIONS="$ASAN_OPTIONS:abort_on_error=1:symbolize=0"
@@ -37,6 +37,7 @@ then
 
   CMD_LINE="$SRC/aflgo/afl-fuzz $AFL_FUZZER_ARGS -i $IN -o $OUT  ./$FUZZER $@"
 else
+  AFL_FUZZER_ARGS=" -m none -c 45m " 
   CMD_LINE="$SRC/afl/afl-fuzz $AFL_FUZZER_ARGS -i $IN -o $OUT  ./$FUZZER $@"
 fi
 

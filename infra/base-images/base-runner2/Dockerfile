@@ -20,7 +20,7 @@ RUN  sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
 #RUN apt-get clean
 RUN apt-get update
 
-RUN apt-get install -y zip file libunwind8 binutils libblocksruntime0
+RUN apt-get install -y zip file libunwind8 binutils libblocksruntime0 wget
 RUN apt-get install -y git subversion jq python3 zip make libunwind8-dev binutils-dev libblocksruntime-dev gawk python3-pip vim && \
     pip3 install --upgrade pip && \
     pip3 install networkx && \
@@ -30,7 +30,7 @@ RUN apt-get install -y git subversion jq python3 zip make libunwind8-dev binutil
 
 
 COPY bad_build_check llvm-symbolizer reproduce run_fuzzer sancov test_all \
-    test_report compile_aflgo /usr/local/bin/
+    test_report compile_aflgo compile_afl /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/bad_build_check \
     /usr/local/bin/llvm-symbolizer \
@@ -54,3 +54,4 @@ ENV AFL_FUZZER_ARGS="-m none -z exp -c 45m"
 ENV IN=/in
 
 RUN /usr/local/bin/compile_aflgo
+RUN /usr/local/bin/compile_afl

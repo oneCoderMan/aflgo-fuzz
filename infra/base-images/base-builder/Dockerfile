@@ -80,6 +80,7 @@ RUN chmod +x /usr/local/bin/coverage_report
 RUN chmod +x /usr/local/bin/srcmap
 
 RUN /usr/local/bin/compile_aflgo
+RUN /usr/local/bin/compile_afl
 
 CMD ["compile"]
 

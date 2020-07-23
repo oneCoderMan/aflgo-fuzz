@@ -37,7 +37,7 @@ then
 
   CMD_LINE="$SRC/aflgo/afl-fuzz $AFL_FUZZER_ARGS -i $IN -o $OUT  ./$FUZZER $@"
 else
-  AFL_FUZZER_ARGS=" -m none -c 45m " 
+  AFL_FUZZER_ARGS=" -m none " 
   CMD_LINE="$SRC/afl/afl-fuzz $AFL_FUZZER_ARGS -i $IN -o $OUT  ./$FUZZER $@"
 fi
 

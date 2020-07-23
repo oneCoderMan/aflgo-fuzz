@@ -39,7 +39,8 @@ RUN chmod +x /usr/local/bin/bad_build_check \
     /usr/local/bin/sancov \
     /usr/local/bin/test_all \
     /usr/local/bin/test_report \
-    /usr/local/bin/compile_aflgo
+    /usr/local/bin/compile_aflgo \
+    /usr/local/bin/compile_afl
 
 # Default environment options for various sanitizers.
 # Note that these match the settings used in ClusterFuzz and

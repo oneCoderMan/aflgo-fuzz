@@ -89,6 +89,8 @@ export CXXFLAGS="$CFLAGS $CXXFLAGS_EXTRA"
 # Skip AFLGO preprocessing if fuzzing engine is afl
 if ! [[ "$FUZZING_ENGINE" == aflgo ]]; then
   DO_POSTPROCESS=0
+  export CC=$SRC/afl/afl-clang-fast
+  export CXX=$SRC/afl/afl-clang-fast++
 
 # Do AFLGO preprocessing
 else

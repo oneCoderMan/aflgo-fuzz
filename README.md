@@ -1,2 +1,2 @@
-正式版V1
-只用AFLGO
+正式版V2
+用AFLGO和AFL
